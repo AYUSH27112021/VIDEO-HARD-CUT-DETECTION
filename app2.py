@@ -198,5 +198,5 @@ def download_cuts():
     return send_file('static\\uploads\\cuts.txt', as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
 
