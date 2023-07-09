@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuts Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loading.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='histogram.css') }}">
+</head>
+<body>
+    <h1>Cuts Detected</h1>
+    <div id="cuts-container">
+        <pre id="cuts-content"></pre>
+        <a href="{{ url_for('static', filename='cuts.txt') }}" download="cuts.txt" id="download-button">Download</a>
+    </div>
+    <div class="description-box">
+        <p class="description-text"><strong>Did you know:</strong> Hard cuts are a common technique used in video editing to transition from one shot to another abruptly. By strategically placing hard cuts, video editors can create a sense of contrast, irony, or surprise.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Calculate cuts and generate the file
+            $.ajax({
+                url: "/calculate_cuts",
+                type: "POST",
+                success: function() {
+                    // Load the cuts content from the text file
+                    $.ajax({
+                        url: "{{ url_for('static', filename='cuts.txt') }}",
+                        type: "GET",
+                        success: function(data) {
+                            // Display the cuts content
+                            $("#cuts-content").text(data);
+                        },
+                        error: function() {
+                            // Display an error message
+                            $("#cuts-content").text("Error occurred while loading cuts.");
+                        }
+                    });
+                },
+                error: function() {
+                    // Display an error message
+                    $("#cuts-content").text("Error occurred during cuts calculation.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

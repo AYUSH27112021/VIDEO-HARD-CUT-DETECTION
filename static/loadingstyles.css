@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  h1.title {
+    font-size: 48px; 
+    margin-bottom: 40px;
+    font-size: 70px;
+    font-weight: 600;
+    background-image: radial-gradient(ellipse, #553c9a, #ee4b2b);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+
+  }
+  
+  h2.sub-title {
+    font-size: 24px; 
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-input {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .file-input input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-input-label {
+    display: inline-block;
+    padding: 15px 55px;
+    background-color: #9bd6ff; /* Set the button color to a light blue shade */
+    color: rgb(14, 14, 14);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .file-input-label:hover {
+    background-color: #79c1ff; /* Set the button color on hover */
+  }
+  
+  .file-input-label:active {
+    background-color: #67b0ff; /* Set the button color on active state */
+  }
+  
+  .upload-button {
+    background-color: #9bd6ff; /* Set the button color to a light blue shade */
+    border: none;
+    color: rgb(10, 10, 10);
+    font-weight: bold;
+    padding: 15px 45px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .upload-button:hover {
+    background-color: #3a5267; /* Set the button color on hover */
+  }
+  
+  .upload-button:active {
+    background-color: #67b0ff; /* Set the button color on active state */
+  }
+  

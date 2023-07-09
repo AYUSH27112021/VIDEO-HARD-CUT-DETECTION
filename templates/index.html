@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Uploader</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+  </head>
+  <body>
+    <h1>Welcome To Index Page Of Our Application</h1>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <div class="container">
+      <div class="box">
+        <div class="btn-container">
+          <a href="/play">Play Video</a>
+        </div>
+        <div class="btn-description"><strong>Video viewer:</strong>Views the uploaded video in a fully-featured video player with controls<br><strong>Requirements:</strong>Require a functional video</div>
+      </div>
+      <div class="box">
+        <div class="btn-container">
+          <a href="/fps">Display FPS</a>
+        </div>
+        <div class="btn-description"><strong>Calculate FPS:</strong> This button allows you to calculate the Frames Per Second (FPS) of a video file. Click on the button to start the FPS calculation process.<br><strong>Requirements:</strong>Require a functional video</div>
+
+      </div>
+      <div class="box">
+        <div class="btn-container">
+          <a href="/histogram">Display Histogram
+        </div>
+        <div class="btn-description"></a><strong>Render Histogram:</strong>This button allows you to generate and display the histogram image of the video file.<br><strong>Requirements:</strong>Require the FPS calculation</div>
+      </div>
+      <div class="box">
+        <div class="btn-container">
+          <a href="/threshold">Display Threshold Value</a>
+        </div>
+        <div class="btn-description"><strong>Calculate Threshold:</strong> This button allows you to compute an adaptive threshold value for cuts detection.<br><strong>Requirements:</strong>Require the threshold calculation</div>
+      </div>
+      <div class="box">
+        <div class="btn-container">
+          <a href="/cuts">No. of Hard Cuts</a>
+        </div>
+        <div class="btn-description"><strong>Cuts in viedo:</strong>This button allows you to detect cuts or scene changes in the given video file.<br><strong>Requirements:</strong>Require the histogram and threshold calculation</div>
+      </div>
+      <div class="note-box">
+        <p class="note">*These operations are independent please go through the discription</p>
+      </div>
+    </div>
+  </body>
+</html>
+

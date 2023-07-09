@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loading.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='histogram.css') }}">
+</head>
+<body>
+    <h1>Adaptive Threshold Calculation</h1>
+    <div id="loading-container">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="description-box">
+        <p class="description-text"><strong>Did you know:</strong> Thresholds are commonly used in image processing and data analysis to separate data into different categories based on a predefined criterion.</p>
+    </div>
+    <button id="start-button">Start Adaptive Threshold Calculation</button>
+    <p id="result"></p>
+    <a href="/upload_success" id="go-back-link" style="display: none;">Go Back</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Hide the loading animation initially
+            $(".lds-facebook").hide();
+
+            // Handle button click event
+            $("#start-button").click(function() {
+                // Show the loading animation
+                $(".lds-facebook").show();
+
+                // Calculate the adaptive threshold
+                $.ajax({
+                    url: "/calculate_threshold",
+                    type: "POST",
+                    success: function(data) {
+                        // Display the threshold result
+                        $("#result").text("Calculated Adaptive Threshold: " + data.threshold);
+                        // Show the "Go Back" link
+                        $("#go-back-link").show();
+                        // Hide the loading animation
+                        $(".lds-facebook").hide();
+                    },
+                    error: function() {
+                        // Display an error message
+                        $("#result").text("Error occurred during threshold calculation.");
+                        // Hide the loading animation
+                        $(".lds-facebook").hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

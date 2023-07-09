@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Loading Page</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loading.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='histogram.css') }}">
+ </head>
+ <body>
+     <div class="container">
+         <h1>FPS Calculation</h1>
+         <div id="loading-container">
+             <div class="lds-facebook">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+             </div>
+         </div>
+         <button id="start-button">Start FPS Calculation</button>
+         <p id="result"></p>
+         <a href="/upload_success" id="go-back-link" style="display: none;">Go Back</a>
+     </div>
+     <div class="description-box">
+         <p class="description-text"><strong>Did you know:</strong>The concept of frames per second originated in the early days of film and was determined by the physical limitations of mechanical film projectors. Traditional film projectors used a shutter mechanism that would momentarily block the projection of each frame while advancing the film to the next frame.<br><strong>Formula used:</strong>Frame Rate (fps) = Number of Frames / Time Duration</p>
+     </div>
+ 
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+         $(document).ready(function() {
+             // Hide the loading animation initially
+             $(".lds-facebook").hide();
+ 
+             // Handle button click event
+             $("#start-button").click(function() {
+                 // Show the loading animation
+                 $(".lds-facebook").show();
+ 
+                 // Start the FPS calculation
+                 $.ajax({
+                     url: "/calculate_fps",
+                     type: "POST",
+                     data: new FormData($('#upload-form')[0]),
+                     processData: false,
+                     contentType: false,
+                     success: function(data) {
+                         // Display the FPS result
+                         $("#result").text("FPS: " + data.fps);
+                         // Show the "Go Back" link
+                         $("#go-back-link").show();
+                         // Hide the loading animation
+                         $(".lds-facebook").hide();
+                     },
+                     error: function() {
+                         // Display an error message
+                         $("#result").text("Error occurred during FPS calculation.");
+                         // Hide the loading animation
+                         $(".lds-facebook").hide();
+                     }
+                 });
+             });
+         });
+     </script>
+ </body>
+ </html>
+ 

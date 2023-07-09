@@ -1,0 +1,73 @@
+h1 {
+    font-size: 48px; /* Increase the font size as desired */
+    margin-bottom: 40px;
+    font-size: 70px;
+    font-weight: 600;
+    background-image: radial-gradient(ellipse, #553c9a, #ee4b2b);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+
+p {
+  font-size: 42px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.box {
+  width: calc(33.33% - 20px);
+  padding: 10px;
+  margin: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #9bd6ff;
+  border: none;
+  color: #d3cdcdb4;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-container:hover {
+  background-color: #7797b2;
+}
+
+.btn-description {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #555;
+  text-align: center;
+}
+.note-box {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.note {
+  font-size: 12px;
+  font-weight: bold;
+  color: #040404;
+}
+  

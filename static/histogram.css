@@ -1,0 +1,91 @@
+h1 {
+    font-size: 48px; /* Increase the font size as desired */
+    margin-bottom: 40px;
+    font-size: 70px;
+    font-weight: 600;
+    background-image: radial-gradient(ellipse, #553c9a, #ee4b2b);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+}
+
+button {
+    background-color: #9bd6ff;
+    color: #08090ab4;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7797b2;
+}
+
+a {
+    text-decoration: none;
+    background-color: #9bd6ff;
+    color: #08090ab4;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    background-color: #7797b2;
+}
+.image-box {
+    display: inline-block;
+    border: 1px solid #282727;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.image-box img {
+    max-width: 100%;
+    height: auto;
+}
+#result {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  
+  .description-box {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description-text {
+    font-size: 14px;
+    color: #0a0a0a;
+}
+
+#cuts-content {
+    height: 400px;
+    overflow: auto;
+    white-space: pre-wrap;
+    background-color: #929292b4; 
+    padding: 10px;
+    font-size: 24px
+}

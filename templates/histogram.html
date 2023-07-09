@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loading.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='histogram.css') }}">
+</head>
+<body>
+    <h1>Histogram Calculation</h1>
+    <div id="loading-container">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="description-box">
+        <p class="description-text"><strong>Did you know:</strong>While histograms are commonly used to represent the distribution of data they can also be applied in images,digital signal processing, computer vision, and even astronomy.<br><strong>Formula:</strong>examining all pixels in the image and assigning each to a bin depending on the pixel intensity.</p>
+    </div>
+    <button id="start-button">Start Histogram Rendering</button>
+    <div id="histogram-container" style="display: none;">
+        <div class="image-box">
+            <img id="histogram-image" src="static/uploads/histogram.svg" alt="Histogram Image">
+        </div>
+        <a href="#" id="download-button" download="histogram.svg">Download Histogram</a>
+    </div>
+    <a href="/upload_success" id="go-back-link" style="display: none;">Go Back</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Hide the loading animation initially
+            $(".lds-facebook").hide();
+
+            // Check if the histogram image already exists
+            var histogramImageSrc = "static/uploads/histogram.svg";
+            $.ajax({
+                url: histogramImageSrc,
+                type: "HEAD",
+                success: function() {
+                    // Display the histogram container
+                    $("#histogram-container").show();
+                    // Show the "Go Back" link
+                    $("#go-back-link").show();
+                }
+            });
+
+            // Handle button click event
+            $("#start-button").click(function() {
+                // Show the loading animation
+                $(".lds-facebook").show();
+
+                // Start the histogram rendering
+                $.ajax({
+                    url: "/render_histogram",
+                    type: "POST",
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            // Display the histogram image in the container
+                            $("#histogram-image").attr("src", "static/uploads/histogram.svg");
+                            // Show the histogram container
+                            $("#histogram-container").show();
+                            // Show the "Go Back" link
+                            $("#go-back-link").show();
+                            // Hide the loading animation
+                            $(".lds-facebook").hide();
+                        } else {
+                            // Display an error message
+                            alert("Error occurred during histogram rendering.");
+                            // Hide the loading animation
+                            $(".lds-facebook").hide();
+                        }
+                    },
+                    error: function() {
+                        // Display an error message
+                        alert("Error occurred during histogram rendering.");
+                        // Hide the loading animation
+                        $(".lds-facebook").hide();
+                    }
+                });
+            });
+
+            // Handle download button click event
+            $("#download-button").click(function() {
+                var histogramImageSrc = $("#histogram-image").attr("src");
+                if (histogramImageSrc) {
+                    var link = document.createElement('a');
+                    link.href = histogramImageSrc;
+                    link.download = 'histogram.png';
+                    link.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
