@@ -32,8 +32,8 @@ you will see the server running
 ```
 click on anyone link and you will see the website open in for default browser
 
-### EXAMPLE
-an example video and its output has been included for reference
+## EXAMPLE
+An example video and its output has been included for reference
 
  **_NOTE:_**  It's important to note that video processing can be resource-intensive and may slow down your system, especially for longer videos or lower-end hardware configurations. Please be patient while the application processes the video.
 #### For reference (**10min video(720p)** takes 20 min on intel i5 11th gen with 16gb ram)
